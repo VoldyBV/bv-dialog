@@ -1,0 +1,13 @@
+.prompt-dialog bv-dialog-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.prompt-dialog bv-dialog-content input[dialog-value]{
+    font-size: 6vh;
+    height: calc(var(--dialog-content-font-size, 3.5) + 1.5vh + 10px);
+}
+.prompt-dialog bv-dialog-content input[type=color] {
+    width: 100%;
+    height: 6vh;
+}

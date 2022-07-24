@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Demo | Prompt dialog </title>
+    <script src="bv_dialog.js"></script>
+    <link rel="stylesheet" href="bv_dialog.css">
+    <script>
+        function Prompt() {
+            var settings = new DialogSettings("prompt");
+
+            settings.title = "Demo | Prompt says";
+            settings.message = `
+            I am prompt dialog with on_OK and on_Cancel callbacks. <br>
+            For the result of callbacks, look at the console;
+            `;
+            settings.type = "text";
+            settings.placeholder = "Enter something...";
+            settings.dialog_params.param1 = ["I", "am", "the", "dialog"];
+            settings.on_OK = (dialog_value, dialog_params) => {
+                console.log(dialog_value);
+                console.log(dialog_params.param1.join(" "));
+            }
+            settings.on_Cancel = (dialog_params) => {
+                console.clear();
+                dialog_params.param1.forEach(item => {
+                    console.log(item);
+                });
+            }
+
+            BV_dialog.prompt(settings);
+        }
+        function Prompt_Upper() {
+            var settings = new DialogSettings("prompt");
+
+            settings.title = "Demo | Prompt says";
+            settings.message = `
+            When settings.upper_lower is set to upper, the text in the field will be in uppercase.
+            `;
+            settings.upper_lower = "upper";
+            settings.type = "text";
+            settings.placeholder = "Enter something...";
+            settings.dialog_params.param1 = ["I", "am", "the", "dialog"];
+            settings.on_OK = (dialog_value, dialog_params) => {
+                console.log(dialog_value);
+                console.log(dialog_params.param1.join(" "));
+            }
+            settings.on_Cancel = (dialog_params) => {
+                console.clear();
+                dialog_params.param1.forEach(item => {
+                    console.log(item);
+                });
+            }
+
+            BV_dialog.prompt(settings);
+        }
+        function Prompt_Lower() {
+            var settings = new DialogSettings("prompt");
+
+            settings.title = "Demo | Prompt says";
+            settings.message = `
+            When settings.upper_lower is set to lower, the text in the field will be in lowercase.
+            `;
+            settings.upper_lower = "lower";
+            settings.type = "text";
+            settings.placeholder = "Enter something...";
+            settings.dialog_params.param1 = ["I", "am", "the", "dialog"];
+            settings.on_OK = (dialog_value, dialog_params) => {
+                console.log(dialog_value);
+                console.log(dialog_params.param1.join(" "));
+            }
+            settings.on_Cancel = (dialog_params) => {
+                console.clear();
+                dialog_params.param1.forEach(item => {
+                    console.log(item);
+                });
+            }
+
+            BV_dialog.prompt(settings);
+        }
+        function Prompt_Number() {
+            var settings = new DialogSettings("prompt");
+
+            settings.title = "Demo | Prompt says";
+            settings.message = `
+            This is prompt dialog but for numbers.
+            `;
+            settings.type = "number";
+            settings.min = -10;
+            settings.max = 20;
+            settings.step = 5;
+            settings.value = 5;
+            settings.dialog_params.param1 = ["You", "have", "closed", "the", "dialog"];
+            settings.on_OK = (dialog_value, dialog_params) => {
+                console.log(dialog_value);
+                console.log(dialog_params.param1.join(" "));
+            }
+            settings.on_Cancel = (dialog_params) => {
+                console.clear();
+                dialog_params.param1.forEach(item => {
+                    console.log(item);
+                });
+            }
+
+            BV_dialog.prompt(settings);
+        }
+        function Prompt_Color() {
+            var settings = new DialogSettings("prompt");
+
+            settings.title = "Demo | Prompt says";
+            settings.message = `
+            This is prompt dialog but for colors.
+            `;
+            settings.type = "color";
+            
+            settings.dialog_params.param1 = ["You", "have", "closed", "the", "dialog"];
+            settings.on_OK = (dialog_value, dialog_params) => {
+                console.log(dialog_value);
+                console.log(dialog_params.param1.join(" "));
+            }
+            settings.on_Cancel = (dialog_params) => {
+                console.clear();
+                dialog_params.param1.forEach(item => {
+                    console.log(item);
+                });
+            }
+
+            BV_dialog.prompt(settings);
+        }
+        function Prompt_Email() {
+            var settings = new DialogSettings("prompt");
+
+            settings.title = "Demo | Prompt says";
+            settings.message = `
+            This is prompt dialog but for e-mail adresses.
+            `;
+            settings.type = "email";
+            settings.placeholder = "your_email@gmail.com"
+            
+            settings.dialog_params.param1 = ["You", "have", "closed", "the", "dialog"];
+            settings.on_OK = (dialog_value, dialog_params) => {
+                console.log(dialog_value);
+                console.log(dialog_params.param1.join(" "));
+            }
+            settings.on_Cancel = (dialog_params) => {
+                console.clear();
+                dialog_params.param1.forEach(item => {
+                    console.log(item);
+                });
+            }
+
+            BV_dialog.prompt(settings);
+        }
+        function Prompt_DateTime() {
+            var settings = new DialogSettings("prompt");
+
+            settings.title = "Demo | Prompt says";
+            settings.message = `
+            This is prompt dialog but for date and time.
+            `;
+            settings.type = "datetime-local";
+            
+            settings.dialog_params.param1 = ["You", "have", "closed", "the", "dialog"];
+            settings.on_OK = (dialog_value, dialog_params) => {
+                console.log(dialog_value);
+                console.log(dialog_params.param1.join(" "));
+            }
+            settings.on_Cancel = (dialog_params) => {
+                console.clear();
+                dialog_params.param1.forEach(item => {
+                    console.log(item);
+                });
+            }
+
+            BV_dialog.prompt(settings);
+        }
+        function Prompt_Date() {
+            var settings = new DialogSettings("prompt");
+
+            settings.title = "Demo | Prompt says";
+            settings.message = `
+            This is prompt dialog but for date.
+            `;
+            settings.type = "date";
+            
+            settings.dialog_params.param1 = ["You", "have", "closed", "the", "dialog"];
+            settings.on_OK = (dialog_value, dialog_params) => {
+                console.log(dialog_value);
+                console.log(dialog_params.param1.join(" "));
+            }
+            settings.on_Cancel = (dialog_params) => {
+                console.clear();
+                dialog_params.param1.forEach(item => {
+                    console.log(item);
+                });
+            }
+
+            BV_dialog.prompt(settings);
+        }
+        function Prompt_Time() {
+            var settings = new DialogSettings("prompt");
+
+            settings.title = "Demo | Prompt says";
+            settings.message = `
+            This is prompt dialog but for date and time.
+            `;
+            settings.type = "time";
+            
+            settings.dialog_params.param1 = ["You", "have", "closed", "the", "dialog"];
+            settings.on_OK = (dialog_value, dialog_params) => {
+                console.log(dialog_value);
+                console.log(dialog_params.param1.join(" "));
+            }
+            settings.on_Cancel = (dialog_params) => {
+                console.clear();
+                dialog_params.param1.forEach(item => {
+                    console.log(item);
+                });
+            }
+
+            BV_dialog.prompt(settings);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="Prompt()"> Prompt dialog | 1 </button> <br><br>
+    <button onclick="Prompt_Upper()"> Prompt dialog | 2 </button> <br><br>
+    <button onclick="Prompt_Lower()"> Prompt dialog | 3 </button> <br><br>
+    <button onclick="Prompt_Number()"> Prompt dialog | 4 </button> <br><br>
+    <button onclick="Prompt_Color()"> Prompt dialog | 5 </button> <br><br>
+    <button onclick="Prompt_Email()"> Prompt dialog | 6 </button> <br><br>
+    <button onclick="Prompt_DateTime()"> Prompt dialog | 7 </button> <br><br>
+    <button onclick="Prompt_Date()"> Prompt dialog | 8 </button> <br><br>
+    <button onclick="Prompt_Time()"> Prompt dialog | 9 </button> <br><br>
+</body>
+</html>

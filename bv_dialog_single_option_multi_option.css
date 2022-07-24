@@ -1,0 +1,14 @@
+.singleOption-multiOption-dialog bv-dialog-content {
+    display: flex;
+    flex-direction: column;
+}
+.singleOption-multiOption-dialog bv-dialog-content label {
+    font-size: calc(var(--dialog-content-font-size, 3.5vh) + 1.5vh);
+    display: flex;
+    align-items: center;
+}
+.singleOption-multiOption-dialog bv-dialog-content label input[name=dialog-value] {
+    height: calc(var(--dialog-content-font-size, 3.5vh));
+    width: calc(var(--dialog-content-font-size, 3.5vh));
+    cursor: pointer;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Demo | Confirm dialog </title>
+    <script src="bv_dialog.js"></script>
+    <link rel="stylesheet" href="bv_dialog.css">
+    <script>
+        function Confirm() {
+            var settings = new DialogSettings("confirm");
+
+            settings.title = "Demo | Confirm says";
+            settings.message = `
+            I am confirm dialog with on_OK and on_Cancel callbacks. <br>
+            For the result of callbacks, look at the console;
+            `;
+            settings.dialog_params.param1 = ["I", "am", "the", "dialog"];
+            settings.on_OK = (dialog_params) => {
+                console.log("on_OK:");
+                console.log(dialog_params.param1.join(" "));
+            }
+            settings.on_Cancel = (dialog_params) => {
+                console.clear();
+                console.log("on_Cancel:");
+                dialog_params.param1.forEach(item => {
+                    console.log(item);
+                });
+            }
+
+            BV_dialog.confirm(settings);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="Confirm()"> Confirm dialog </button> <br><br>
+</body>
+</html>

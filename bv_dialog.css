@@ -1,0 +1,122 @@
+/* Styles for premade dialogs */
+@import url(bv_dialog_prompt.css);
+@import url(bv_dialog_single_option_multi_option.css);
+/* Stylling dialog's overlay */
+bv-dialog {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    background-color: var(--dialog-overlay-color, rgba(0, 0, 0, 0.75));
+    
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* Stylling dialog's header and footer */
+bv-dialog bv-dialog-header, bv-dialog bv-dialog-footer {
+    height: 13%;
+    width: 65%;
+
+    background-color: var(--dialog-hf-background-color, rgb(192, 192, 192));
+    box-sizing: border-box;
+    border: 
+        var(--dialog-border-width, 3px) 
+        var(--dialog-border-style, solid) 
+        var(--dialog-border-color, black);
+    display: flex;
+    align-items: center;
+    padding: 1% 0.5% 1% 0.5%;
+
+}
+/* Stylling dialog's header */
+bv-dialog bv-dialog-header {
+    border-radius: 25px 25px 0 0;
+    font-size: var(--dialog-header-font-size, 4vh);
+    color: var(--dialog-header-color, black);
+    border-bottom: none;
+}
+bv-dialog bv-dialog-content {
+    width: 65%;
+
+    min-height: 32%;
+    height: auto;
+    max-height: 64%;
+
+    overflow: auto;
+    background-color: var(--dialog-content-background-color, white);
+
+    font-size: var(--dialog-content-font-size, 3.5vh);
+
+    box-sizing: border-box;
+    border:
+        var(--dialog-border-width, 3px) 
+        var(--dialog-border-style, solid) 
+        var(--dialog-border-color, black);
+    padding: 1%;
+    color: var(--dialog-content-color, black);
+}
+/* Stylling dialog's footer */
+bv-dialog bv-dialog-footer {
+    border-radius: 0 0 25px 25px;
+    border-top: none;
+    font-size: var(--dialog-footer-font-size, 4vh);
+    
+    align-items: stretch;
+    justify-items: stretch;
+}
+/* Stylling dialog's action buttons */
+bv-dialog-footer button {
+    border-radius: 10px;
+    margin-right: 0.3vw;
+    margin-left: 0.3vw;
+    flex: 1;
+    font-size: inherit;
+    cursor: pointer;
+}
+/* Classes */
+/* Dialog action button -> OK */
+.dialog-OK-button {
+    background-color: #0066CC;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #0066CC;
+    color: white;
+    font-weight: bold;
+}
+.dialog-OK-button:hover{
+    background-color: #2778c9;
+}
+/* Dialog action button -> cancel */
+.dialog-Cancel-button{
+    background-color: rgb(224, 224, 224);
+    border-style: solid;
+    border-width: 2px;
+    border-color: silver;
+    font-weight: bold;
+    color: black;
+}
+.dialog-Cancel-button:hover{
+    background-color: var(--dlg-btn-Cancel-Hover-bgC, rgb(250, 250, 250));
+}
+/* This style will be applied when dialog does not have a header */
+.dialog-content-style-no-header {
+    min-height: 38.5%;
+    max-height: 77%;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+/* This style will be applied when dialog does not have a footer */
+.dialog-content-style-no-footer {
+    min-height: 45%;
+    max-height: 90%;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+.dialog-message {
+    font: inherit;
+    color: inherit;
+}

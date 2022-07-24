@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Demo | Alert dialog </title>
+    <script src="bv_dialog.js"></script>
+    <link rel="stylesheet" href="bv_dialog.css">
+    <script>
+        function Open() {
+            var settings = new DialogSettings("alert");
+            settings.title = "Demo | bv-dialog | Alert dialog says";
+            settings.message = `
+                This is simple alert dialog with on_OK callback and it has dialog_params.
+                <br><br>
+                For results of callback, look at the console.
+            `;
+            settings.dialog_params = {
+                creator_name: "Borislav",
+                creator_surname: "Vucicevic"
+            }
+            settings.on_OK = (dialog_params) => {
+                for (const key in dialog_params) {
+                    console.log(key + ": " + dialog_params[key]);
+                }
+            }
+            BV_dialog.alert(settings);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="Open()"> Alert dialog </button>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Demo | SingeOption dialog </title>
+    <script src="bv_dialog.js"></script>
+    <link rel="stylesheet" href="bv_dialog.css">
+    <script>
+        function Open() {
+            var settings = new DialogSettings("");
+
+            settings.title = "Demo | Prompt says";
+            settings.message = `
+            I am singleOption dialog with on_OK and on_Cancel callbacks. <br>
+            For the result of callbacks, look at the console;
+            `;
+
+            settings.options = [
+                {real_value: "spade", display_value: "&spades;"},
+                {real_value: "club", display_value: "&clubs;"},
+                {real_value: "heart", display_value: "&hearts;"},
+                {real_value: "diamond", display_value: "&diams;"}
+            ];
+
+            settings.dialog_params.param1 = ["I", "am", "the", "dialog"];
+
+            settings.on_OK = (dialog_values, dialog_params) => {
+                var display_values = [];
+
+                dialog_values.forEach((item) => {
+                    display_values.push(item.real_value);
+                })
+
+                console.log(display_values.join("-"));
+                console.log(dialog_params.param1.join(" "));
+            }
+            settings.on_Cancel = (dialog_params) => {
+                console.clear();
+                dialog_params.param1.forEach(item => {
+                    console.log(item);
+                });
+            }
+            BV_dialog.multiOption(settings);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="Open()"> MultiOption </button> <br><br>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Demo | Custom dialog </title>
+    <script src="bv_dialog.js"></script>
+    <link rel="stylesheet" href="bv_dialog.css">
+    <script>
+        function Open() {
+            var settings = new DialogSettings("custom");
+
+            settings.dialog = document.body.querySelector("#my-dialog");
+            settings.collect_dialog_values = function(dialog) {
+                var dialog_values = [];
+
+                dialog.querySelectorAll("input[name=dialog-value").forEach((item) => {
+                    dialog_values.push(item.value);
+                })
+
+                return dialog_values;
+            }
+            settings.action_callbacks = {
+                abort: () => { console.log("aborted");},
+                clear: function() {
+                    var dialog = this.dialog;
+                    
+                    dialog.querySelectorAll("input[name=dialog-value]").forEach(item => {
+                        item.value = "";
+                    });
+                },
+                proceede: function() {
+                    var dialog_values = this.collect_dialog_values(this.dialog);
+
+                    dialog_values.forEach((item) =>{
+                        console.log(item);
+                    });
+
+                }
+            }
+
+            BV_dialog.custom(settings)
+        }
+    </script>
+    <style>
+        .custom-dialog bv-dialog-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .custom-dialog bv-dialog-content input {
+            font-size: var(--dialog-content-font-size);
+            min-height: calc(var(--dialog-content-font-size, 3.5) + 1.5vh + 10px);
+            max-height: calc(var(--dialog-content-font-size, 3.5) + 1.5vh + 10px);
+            margin-top: 2vh;
+        }
+        .custom-dialog bv-dialog-footer button {
+            font-weight: bold;
+            color: white;
+        }
+        .custom-dialog bv-dialog-footer .abort {
+            background-color: rgb(255, 30, 30);
+            border: solid 2px rgb(255, 30, 30);
+        }
+        .custom-dialog bv-dialog-footer .abort:hover {
+            background-color: rgb(255, 50, 50);
+        }
+        .custom-dialog bv-dialog-footer .clear {
+            background-color: rgb(240, 240, 30);
+            border: solid 2px rgb(240, 240, 30);
+        }
+        .custom-dialog bv-dialog-footer .clear:hover {
+            background-color: rgb(240, 240, 50);
+        }
+        .custom-dialog bv-dialog-footer .proceede {
+            background-color: rgb(30, 255, 30);
+            border: solid 2px rgb(30, 255, 30);
+        }
+        .custom-dialog bv-dialog-footer .proceede:hover {
+            background-color: rgb(50, 255, 50);
+        }
+    </style>
+    <style>
+        .custom-dialog {
+            /* global properties */
+            --dialog-border-style: ridge;
+            --dialog-border-width: 7px;
+            --dialog-border-color: darkblue;
+            --dialog-overlay-color: rgba(0, 0, 128, 0.75);
+            /* properties of header and footer */
+            --dialog-hf-background-color: cornflowerblue;
+            /* properties of header */
+            --dialog-header-font-size: 7vh;
+            --dialog-header-color: darkblue;
+            /* properties of content */
+            --dialog-content-background-color: powderblue;
+            --dialog-content-color: darkblue;
+            --dialog-content-font-size: 7vh;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="Open()" :focus> Show Dialog </button>
+    <bv-dialog id="my-dialog" class="custom-dialog">
+        <bv-dialog-header>
+            Sign-In
+        </bv-dialog-header>
+        <bv-dialog-content>
+            <div class="message"> 
+                Enter your first name, last name and birth date to sign in. 
+            </div>
+            <input type="text" name="dialog-value" placeholder="Enter your fist name"/>
+            <input type="text" name="dialog-value" placeholder="Enter your last name" />
+            <input type="date" name="dialog-value" />
+        </bv-dialog-content>
+        <bv-dialog-footer>
+            <button action-callback="abort" close-dialog="true" class="abort"> Abort </button>
+            <button action-callback="clear" close-dialog="false" class="clear"> Clear fields </button>
+            <button action-callback="proceede" close-dialog="true" class="proceede"> Proceede </button>
+        </bv-dialog-footer>
+    </bv-dialog>
+</body>
+</html>

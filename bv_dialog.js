@@ -492,9 +492,14 @@ class BV_dialog {
 			if(settings.dialog == undefined || settings.dialog.tagName.toLowerCase() != "bv-dialog"){
 				throw "The setting.dialog must be a bv-dialog element"
 			}
+			//Otherwise do this
 			//Clone dialog
 			settings.dialog = settings.dialog.cloneNode(true);
-			//Otherwise do this
+			//bind settings to settings.collect_dialog_values if settings.collect_dialog_values is a function
+			if(typeof settings.collect_dialog_values == "function"){
+				settings.collect_dialog_values = settings.collect_dialog_values.bind(settings);
+			}
+			//target action buttons of dialog
 			var action_buttons = settings.dialog.querySelectorAll("bv-dialog-footer button");
 			//Reseting the dialog
 			function Close_Dialog(){

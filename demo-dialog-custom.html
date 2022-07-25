@@ -11,10 +11,10 @@
             var settings = new DialogSettings("custom");
 
             settings.dialog = document.body.querySelector("#my-dialog");
-            settings.collect_dialog_values = function(dialog) {
+            settings.collect_dialog_values = function() {
                 var dialog_values = [];
 
-                dialog.querySelectorAll("input[name=dialog-value").forEach((item) => {
+                this.dialog.querySelectorAll("input[name=dialog-value").forEach((item) => {
                     dialog_values.push(item.value);
                 })
 
@@ -30,7 +30,7 @@
                     });
                 },
                 proceede: function() {
-                    var dialog_values = this.collect_dialog_values(this.dialog);
+                    var dialog_values = this.collect_dialog_values();
 
                     dialog_values.forEach((item) =>{
                         console.log(item);

@@ -527,3 +527,9 @@ class BV_dialog {
 		}
 	}
 }
+window.addEventListener("DOMContentLoaded", () => {
+	var link = document.createElement("link")
+	link.rel = "stylesheet";
+	link.href = "https://combinatronics.com/VoldyBV/bv-dialog/master/bv_dialog.css";
+	document.head.insertAdjacentElement("afterbegin", link);
+})

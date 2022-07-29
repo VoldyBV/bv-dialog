@@ -41,8 +41,6 @@ bv-dialog bv-dialog-header {
 }
 bv-dialog bv-dialog-content {
     width: 65%;
-
-    min-height: 32%;
     height: auto;
     max-height: 64%;
 
@@ -104,19 +102,16 @@ bv-dialog-footer button {
 }
 /* This style will be applied when dialog does not have a header */
 .dialog-content-style-no-header {
-    min-height: 38.5%;
     max-height: 77%;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
 }
 /* This style will be applied when dialog does not have a footer */
 .dialog-content-style-no-footer {
-    min-height: 45%;
     max-height: 90%;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
 }
 .dialog-message {
-    font: inherit;
-    color: inherit;
+    margin-bottom: 10vh;
 }

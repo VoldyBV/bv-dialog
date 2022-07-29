@@ -156,7 +156,7 @@ class BV_dialog {
 			
 			//creating container for message
 			var message = document.createElement("div");
-			message.classList.toggle("message")
+			message.classList.add("dialog-message")
 			//creating ok action button
 			var ok_btn = document.createElement("button");
 			ok_btn.classList.toggle("dialog-OK-button");
@@ -172,7 +172,7 @@ class BV_dialog {
 					settings.dialog.classList.toggle(item);
 				});
 			}
-			if(settings.message != undefined){
+			if(settings.message != undefined && settings.message.length > 0){
 				message.innerHTML = settings.message;
 				settings.dialog.querySelector("bv-dialog-content").appendChild(message);
 			}

@@ -2,6 +2,9 @@
 @import url(bv_dialog_prompt.css);
 @import url(bv_dialog_single_option_multi_option.css);
 /* Stylling dialog's overlay */
+body {
+    position: relative;
+}
 bv-dialog {
     position: absolute;
     top: 0;
